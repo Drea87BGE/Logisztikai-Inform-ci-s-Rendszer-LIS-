@@ -391,7 +391,9 @@
                 <h1>I. TANANYAG</h1>
                 <h2>A Logisztikai Információs Rendszer</h2>
 
-                <p>Üdvözlünk a <strong>Webáruház működtetése<strong> tantárgy <strong>Logisztikai feladatok<strong> témakörében! Ebben a modulban a <strong>Logisztikai információs rendszerek<strong>kel ismerkedünk, a "gépházba" nézünk be: megvizsgáljuk azt a digitális gerincet, ami nélkül egy modern webshop csupán egy üres kirakat lenne.</p>
+                <p>Üdvözlünk a <strong>Webáruház működtetése<strong> tantárgy <strong>Logisztikai feladatok<strong> témakörében! 
+                <p>Ebben a modulban a <strong>Logisztikai információs rendszerekkel<strong> ismerkedünk, 
+                <p>a "gépházba" nézünk be: megvizsgáljuk azt a digitális gerincet, ami nélkül egy modern webshop csupán egy üres kirakat lenne.</p>
 
                 <img src="korforgas.png" alt="A logisztikai folyamat ábrája">
 
@@ -401,7 +403,10 @@
                     <p><strong>A kérdés:</strong> Hogyan akadályozza meg egy jól felépített Logisztikai Információs Rendszer (LIS) ezt a katasztrófát?</p>
                 </div>
 
-                <h3 id="terkep">A Rendelés Útja: Interaktív Rendszertérkép</h3>
+                <img src="valaszto.png" alt="Elválasztó">
+
+               
+                <h3 id="terkep">A Rendelés Útja </h3>
                 <p>Egy rendelés adatai több, egymással tökéletes szinkronban lévő rendszeren utaznak keresztül. Vidd az egeret a dobozok fölé a buborékokért!</p>
                 
                 <div class="system-map">
@@ -436,23 +441,65 @@
                     </div>
                 </div>
 
+
+                <img src="valaszto.png" alt="Elválasztó">
+
+               
                 <h3 id="fogalmak">Fogalomtár</h3>
                 <p>A térképen látott rendszerek és folyamatok kulcsfogalmai:</p>
                 <div class="glossary">
                     <dl>
-                        <dt>Vállalatirányítási Rendszer (ERP)</dt>
-                        <dd>Egy integrált szoftverrendszer, amely egy vállalat összes fő üzleti folyamatát kezeli (pénzügy, HR, beszerzés, készlet). A LIS esetében ez a központi adatbázis, ami megmondja, miből mennyi van.</dd>
+                        <dt>Automatizáció</dt>
+                        <dd>A manuális munka (pl. adatok másolása, e-mailek írása, címkenyomtatás) kiváltása a rendszerek közötti automatikus adatátvitellel. Ez csökkenti a hibát és növeli a sebességet.</dd>
+
+                        <dt>CRM (Customer Relationship Management)</dt>
+                        <dd>Ügyfélkapcsolat-kezelő rendszer. Ez a szoftver tárolja a vevők adatait, vásárlási előzményeit, kommunikációját. Gyakran az ERP vagy a webáruház motor része. A logisztika számára azért fontos, mert ez adja a pontos szállítási címet és elérhetőségeket.</dd>
+
+                        <dt>Dokumentumkezelés</dt>
+                        <dd>A logisztikai folyamatot kísérő hivatalos dokumentumok digitális létrehozása és áramlása. Ide tartozik a <b>Számla</b> (az ERP generálja), a <b>Szállítólevél</b> (a csomagba kerül, az ERP vagy WMS generálja), valamint a <b>Raktári bevét</b> és <b>Kiadás</b> bizonylatai (a WMS kezeli).</dd>
+
+                        <dt>Integráció</dt>
+                        <dd>A LIS kulcsfogalma. A különböző szoftverkomponensek (Webáruház, ERP, WMS, TMS) összekapcsolása, hogy az adatok automatikusan, emberi beavatkozás nélkül áramolhassanak közöttük. Leggyakrabban API-kon (Application Programming Interface) keresztül valósul meg.</dd>
+                        
+                        <dt>Logisztika</dt>
+                        <dd>Az e-kereskedelemben a logisztika jelenti a teljes fizikai folyamatot a termék beszerzésétől a vevőnek történő kézbesítésig. Magában foglalja a raktározást, a komissiózást (picking), a csomagolást (packing) és a szállítmányozást. A LIS ennek a fizikai folyamatnak a digitális irányítója.</dd>
+
+                        <dt>Raktározás</dt>
+                        <dd>A logisztika fizikai része; a termékek átvétele, tárolása a raktárban, majd összekészítése (komissiózás) és csomagolása a kiszállításhoz. A modern raktározást szoftveres (WMS) és hardveres (pl. vonalkódolvasók, PDA-k) eszközök támogatják a hatékonyság érdekében.</dd>
+
+                        <dt>Rendszer</dt>
+                        <dd>Összefoglaló név az egymással összekapcsolt szoftveres és hardveres elemek összességére. A LIS (Logisztikai Információs Rendszer) maga is egy rendszer, ami kisebb alrendszerekből (ERP, WMS, TMS) áll, melyek egy közös célért (a rendelés teljesítése) működnek együtt.</dd>
                         
                         <dt>Státuszkövetés</dt>
                         <dd>A sikeres integráció leglátványosabb eredménye. Azt jelenti, hogy a belső logisztikai állapotokat (pl. "Feldolgozás alatt", "Összekészítés alatt", "Szállítás alatt") valós időben, automatikusan kommunikáljuk a vevő felé.</dd>
+
+                        <dt>Szállítmányozás</Ddt>
+                        <dd>A logisztikai lánc utolsó, de egyik legkritikusabb lépése: a csomag eljuttatása a raktárból a vevőhöz ("last mile delivery"). Ezt jellemzően külső futárszolgálatok végzik. A TMS szoftver feladata ezen partnerek digitális kezelése.</dd>
+
+                        <dt>TMS (Transportation Management System)</dt>
+                        <dd>Szállítmányozás-irányítási Rendszer. A "last mile" (utolsó kilométer) menedzsere. Ez a szoftver áll kapcsolatban (integrációban) a futárszolgálatok (pl. GLS, DPD, Packeta) rendszereivel. Automatikusan generálja a szállítási címkéket (fuvarleveleket) és kezeli a csomagkövetést.</dd>
                         
-                        <dt>Automatizáció</dt>
-                        <dd>A manuális munka (pl. adatok másolása, e-mailek írása, címkenyomtatás) kiváltása a rendszerek közötti automatikus adatátvitellel. Ez csökkenti a hibát és növeli a sebességet.</dd>
+                        <dt>Vállalatirányítási Rendszer (ERP)</dt>
+                        <dd>Egy integrált szoftverrendszer, amely egy vállalat összes fő üzleti folyamatát kezeli (pénzügy, HR, beszerzés, készlet). A LIS esetében ez a központi adatbázis, az "agy", ami megmondja, miből mennyi van, és kezeli a számlázást. Ez biztosítja az "egyetlen igazság forrását" (Single Source of Truth).</dd>
+
+                        <dt>Vevő</dt>
+                        <dd>A logisztikai folyamat alfája és omegája. Ő indítja el a folyamatot a rendelésével, és ő a végső címzettje a fizikai terméknek és a státuszfrissítéseknek is. A teljes rendszer az ő elégedettségének biztosítására épül.</dd>
+
+                        <dt>Webáruház (Motor)</dt>
+                        <dd>A "kirakat", a felhasználói felület, ahol a vevő leadja a rendelést. A logisztikai folyamat szempontjából ez a legelső láncszem, az esemény indítója (trigger). Feladata a rendelési adatok és a vevői adatok rögzítése és azonnali továbbítása az ERP rendszer felé.</dd>
+                        
+                        <dt>WMS (Warehouse Management System)</dt>
+                        <dd>Raktárirányítási Rendszer. A fizikai raktár digitális mása és irányítója. Pontosan tudja, melyik termék melyik polcon (tárhelyen) van. Optimalizálja a raktárosok "szedési" (komissiózási) útvonalát, és kezeli a raktári bevételezést és kiadást.</dd>
+
                     </dl>
                 </div>
 
-                <img src="https://source.unsplash.com/random/800x400/?server,data" alt="Adatközpont szerverek">
+                
 
+
+                <img src="valaszto.png" alt="Elválasztó">
+
+               
                 <h3 id="vita">Stratégiai Vita: Beruházzunk vagy ne?</h3>
                 <p>Egy napi 100 rendeléses KKV webáruház vagyunk, ami kinőtte az Excelt. A vezetőség előtt két út áll:</p>
                 <ol>
@@ -481,6 +528,14 @@
                         <div class="drag-item" draggable="true" data-target="con">Hosszú bevezetési idő</div>
                         <div class="drag-item" draggable="true" data-target="pro">Standardizált, átlátható folyamatok</div>
                         <div class="drag-item" draggable="true" data-target="con">Rugalmatlanság, nehézkes egyedi igények kezelése</div>
+                        <div class="drag-item" draggable="true" data-target="pro">Valós idejű készletkezelés</div>
+                        <div class="drag-item" draggable="true" data-target="con">Komplex betanulási folyamat</div>
+                        <div class="drag-item" draggable="true" data-target="pro">Automatikus számlázás és szállítólevél</div>
+                        <div class="drag-item" draggable="true" data-target="con">Magas fenntartási és licencdíjak</div>
+                        <div class="drag-item" draggable="true" data-target="pro">Professzionális vevői élmény (státuszkövetés)</div>
+                        <div class="drag-item" draggable="true" data-target="con">Gyorsabb, rugalmas (patchwork) módosítások</div>
+                        <div class="drag-item" draggable="true" data-target="pro">Adatvezérelt döntéshozatal (riportok)</div>
+                        <div class="drag-item" draggable="true" data-target="pro">Kevesebb manuális könyvelési feladat</div>
                     </div>
                 </div>
 
@@ -489,7 +544,7 @@
             <section id="terv">
                 <h2>II. FELDOLGOZÁSI TERV (45 perc)</h2>
 
-                <p>Ez a tananyag egy 45 perces, mesterképzés (MSc) szintű szemináriumra lett tervezve, ahol a fókusz a kritikai gondolkodáson és a stratégiai döntéshozatalon van.</p>
+                <p>Ez a tananyag egy 45 perces tanórára lett tervezve, ahol a fókusz a kritikai gondolkodáson és a stratégiai döntéshozatalon van.</p>
 
                 <h3 id="celok">Tanulási Célok (Bloom-taxonómia alapján)</h3>
                 <ul>
@@ -500,7 +555,11 @@
                     <li><strong>Értékelés:</strong> A hallgató képes érvelni egy adott LIS-beruházás mellett vagy ellen egy KKV-szcenárióban.</li>
                 </ul>
 
-                <h3 id="oramenet">Óraforgatókönyv</h3>
+
+                <img src="valaszto.png" alt="Elválasztó">
+
+               
+                <h3 id="oramenet">Óraterv</h3>
                 <table class="lesson-plan-table">
                     <thead>
                         <tr>
@@ -544,6 +603,10 @@
                     </tbody>
                 </table>
 
+
+                <img src="valaszto.png" alt="Elválasztó">
+
+               
                 <h3 id="ertekeles">Értékelés és Visszacsatolás</h3>
                 <ul>
                     <li><strong>Formális (diagnosztikus):</strong> A "Black Friday Káosz" vitában való részvétel mutatja a előzetes tudást.</li>
