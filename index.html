@@ -673,7 +673,7 @@
                         <tr>
                             <td>5-20 p.</td>
                             <td><strong>Irányított felfedezés:</strong> Az interaktív térkép elemeinek felrajzolása (tábla/whiteboard). Kérdésekkel vezeti a hallgatókat az adat útján.</td>
-                            <td><strong>Konstruktivizmus:</strong> A hallgatók közösen építik fel a folyamatábrát, válaszolnak a kérdésekre (pl. "Ki tud a készletről?") (Vízsuális modellezés).</td>
+                            <td><strong>Konstruktivizmus:</strong> A hallgatók közösen építik fel a folyamatábrát, válaszolnak a kérdésekre (pl. "Ki tud a készletről?") (Vizuális modellezés).</td>
                             <td>Ez a weboldal (interaktív térkép) vagy whiteboard.</td>
                         </tr>
                         <tr>
@@ -736,7 +736,7 @@
             document.getElementById("progress-bar").style.width = progress + "%";
         }
 
-        // --- 2. Párosítós Játék (Drag & Drop) Működése (JAVÍTOTT LOGIKA) ---
+        // --- 2. Párosítós Játék (Drag & Drop) Működése (VÉGLEGES JAVÍTÁS) ---
         document.addEventListener('DOMContentLoaded', (event) => {
             const dragItems = document.querySelectorAll('.drag-item');
             const dropZones = document.querySelectorAll('.drop-zone');
@@ -758,6 +758,7 @@
                 // Húzás indítása
                 item.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', e.target.id); 
+                    e.dataTransfer.effectAllowed = 'move'; // JAVÍTÁS: Engedélyezzük a mozgatást
                     e.target.classList.remove('show-explanation'); // Tooltip elrejtése húzás közben
                     setTimeout(() => {
                         e.target.classList.add('dragging'); 
@@ -787,17 +788,19 @@
             // --- 4. Dobozok eseménykezelői ---
             dropZones.forEach(zone => {
                 zone.addEventListener('dragover', (e) => {
-                    e.preventDefault(); // Engedélyezzük a dobást
+                    e.preventDefault(); // JAVÍTÁS: Enélkül nem működik a drop!
+                    e.dataTransfer.dropEffect = 'move'; // JAVÍTÁS: Vizuális visszajelzés a böngészőnek
                     zone.classList.add('drag-over');
                 });
 
                 zone.addEventListener('dragleave', (e) => {
+                    e.preventDefault();
                     zone.classList.remove('drag-over');
                 });
 
                 // --- 5. Dobás esemény (JAVÍTOTT LOGIKA) ---
                 zone.addEventListener('drop', (e) => {
-                    e.preventDefault();
+                    e.preventDefault(); // JAVÍTÁS: Fontos a dobás véglegesítéséhez
                     zone.classList.remove('drag-over');
 
                     const draggedId = e.dataTransfer.getData('text/plain');
