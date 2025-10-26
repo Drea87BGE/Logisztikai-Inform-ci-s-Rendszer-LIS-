@@ -280,7 +280,7 @@
             border-radius: 5px;
             cursor: grab;
             transition: background-color 0.2s;
-            position: relative; /* */
+            position: relative; /* Tooltip pozicionálásához kell */
         }
         .drag-item:hover {
             background-color: #0056b3;
@@ -333,7 +333,7 @@
             background-color: #5a6268;
         }
 
-        /* */
+        /* === JÁTÉK BŐVÍTÉS (CSS): Indoklás Tooltip Stílusa === */
         
         /* A tooltip szövegdoboza (rejtett alapból) */
         .drag-item.show-explanation::after {
@@ -382,7 +382,7 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        /* */
+        /* === JÁTÉK BŐVÍTÉS VÉGE (CSS) === */
         
 
         /* --- II. FELDOLGOZÁSI TERV: Táblázat --- */
@@ -624,6 +624,8 @@
                         <div class="drag-item" draggable="true" data-target="pro" data-explanation="Az integrált rendszerben minden adat egy helyen van. Ez lehetővé teszi komplex riportok (pl. 'melyik termék a legprofitábilisabb?') lekérését a vezetőség számára.">Adatvezérelt döntéshozatal (riportok)</div>
                         <div class="drag-item" draggable="true" data-target="pro" data-explanation="A webshopból érkező bevétel és a számlák adatai automatikusan átkerülnek a könyvelési (pénzügyi) modulba, kiváltva a manuális adatrögzítést.">Kevesebb manuális könyvelési feladat</div>
                     </div>
+
+
                     <div class="check-button-container">
                         <button id="check-answers-btn">Ellenőrzés</button>
                         <button id="reset-game-btn">Újrapróbálom</button>
@@ -671,7 +673,7 @@
                         <tr>
                             <td>5-20 p.</td>
                             <td><strong>Irányított felfedezés:</strong> Az interaktív térkép elemeinek felrajzolása (tábla/whiteboard). Kérdésekkel vezeti a hallgatókat az adat útján.</td>
-                            <td><strong>Konstruktivizmus:</strong> A hallgatók közösen építik fel a folyamatábrát, válaszolnak a kérdésekre (pl. "Ki tud a készletről?") (Vizuális modellezés).</td>
+                            <td><strong>Konstruktivizmus:</strong> A hallgatók közösen építik fel a folyamatábrát, válaszolnak a kérdésekre (pl. "Ki tud a készletről?") (Vízsuális modellezés).</td>
                             <td>Ez a weboldal (interaktív térkép) vagy whiteboard.</td>
                         </tr>
                         <tr>
@@ -734,7 +736,8 @@
             document.getElementById("progress-bar").style.width = progress + "%";
         }
 
-        // document.addEventListener('DOMContentLoaded', (event) => {
+        // --- 2. Párosítós Játék (Drag & Drop) Működése (JAVÍTOTT LOGIKA) ---
+        document.addEventListener('DOMContentLoaded', (event) => {
             const dragItems = document.querySelectorAll('.drag-item');
             const dropZones = document.querySelectorAll('.drop-zone');
             const checkBtn = document.getElementById('check-answers-btn');
@@ -792,12 +795,14 @@
                     zone.classList.remove('drag-over');
                 });
 
-                // --- 5. Dobás esemény (MEGVÁLTOZOTT LOGIKA) ---
+                // --- 5. Dobás esemény (JAVÍTOTT LOGIKA) ---
                 zone.addEventListener('drop', (e) => {
                     e.preventDefault();
                     zone.classList.remove('drag-over');
 
                     const draggedId = e.dataTransfer.getData('text/plain');
+                    if (!draggedId) { return; } // Hiba elkerülése
+
                     const draggedEl = document.getElementById(draggedId);
 
                     if (draggedEl) {
@@ -814,7 +819,7 @@
                 });
             });
 
-            // --- 6. Ellenőrzés gomb (BŐVÍTETT LOGIKA) ---
+            // --- 6. Ellenőrzés gomb (JAVÍTOTT LOGIKA) ---
             checkBtn.addEventListener('click', () => {
                 gameChecked = true; // Mostantól mutathatjuk a tooltipet
                 
@@ -837,7 +842,7 @@
                 });
             });
 
-            // --- 7. Újrapróbálom gomb (BŐVÍTETT LOGIKA) ---
+            // --- 7. Újrapróbálom gomb (JAVÍTOTT LOGIKA) ---
             resetBtn.addEventListener('click', () => {
                 gameChecked = false; // Tooltipek kikapcsolása
                 
@@ -850,7 +855,7 @@
                 });
             });
         });
-        // </script>
+    </script>
 
 </body>
 </html>
