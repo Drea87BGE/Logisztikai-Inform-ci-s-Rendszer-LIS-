@@ -56,10 +56,14 @@
             border-bottom: 2px solid #007bff;
             padding-bottom: 10px;
         }
+
+        /* === 1. MÓDOSÍTÁS KEZDETE (FŐMENÜ) === */
         .sidebar nav ul {
             list-style: none;
-            padding: 0;
+            padding: 0; /* FŐMENÜ BEHÚZÁS NULLÁZÁSA */
         }
+        /* === 1. MÓDOSÍTÁS VÉGE (FŐMENÜ) === */
+
         .sidebar nav li {
             margin: 15px 0;
         }
@@ -69,17 +73,21 @@
            font-weight: 500;
            font-size: 1.1em;
            transition: all 0.2s;
-           overflow-wrap: break-word; /* Ez javítja a sortörést */
+           overflow-wrap: break-word; /* Sortörés a menüben */
        }
         .sidebar nav a:hover {
             color: #ffffff;
             padding-left: 5px;
         }
+
+        /* === 2. MÓDOSÍTÁS KEZDETE (ALMENÜ) === */
         .sidebar .sub-menu {
             list-style: square;
-            padding-left: 20px;
+            padding-left: 5px; /* ALMENÜ BEHÚZÁS NEGYEDELVE (20px -> 5px) */
             margin-top: 10px;
         }
+        /* === 2. MÓDOSÍTÁS VÉGE (ALMENÜ) === */
+
         .sidebar .sub-menu li {
             margin: 8px 0;
         }
@@ -287,6 +295,8 @@
         .drag-over {
             background-color: #e0f7fa;
         }
+
+        /* === JÁTÉK MÓDOSÍTÁS KEZDETE (CSS) === */
         
         /* --- Visszajelzés a párosítós játékon (ÚJ) --- */
         .drag-item.correct-item {
@@ -328,6 +338,9 @@
             background-color: #5a6268;
         }
         
+        /* === JÁTÉK MÓDOSÍTÁS VÉGE (CSS) === */
+        
+
         /* --- II. FELDOLGOZÁSI TERV: Táblázat --- */
         .lesson-plan-table {
             width: 100%;
@@ -418,12 +431,12 @@
             </ul>
         </nav>
 
-<main class="content">
+        <main class="content">
 
             <section id="tananyag">
-            
                 <h1>I. TANANYAG</h1>
                 <h2>A Logisztikai Információs Rendszer</h2>
+
                 <p>Üdvözlünk a <strong>Webáruház működtetése</strong> tantárgy <strong>Logisztikai feladatok</strong> témakörében!</p>
                 <p>Ebben a modulban a <strong>Logisztikai információs rendszerekkel</strong> ismerkedünk,</p>
                 <p>a "gépházba" nézünk be: megvizsgáljuk azt a digitális gerincet, ami nélkül egy modern webshop csupán egy üres kirakat lenne.</p>
@@ -437,7 +450,8 @@
                 </div>
 
                 <img src="valaszto.png" alt="Elválasztó">
-            <h3 id="terkep">A Rendelés Útja </h3>
+                
+                <h3 id="terkep">A Rendelés Útja </h3>
                 <p>Egy rendelés adatai több, egymással tökéletes szinkronban lévő rendszeren utaznak keresztül. Vidd az egeret a dobozok fölé a buborékokért!</p>
                 
                 <div class="system-map">
@@ -504,7 +518,7 @@
                         <dd>A sikeres integráció leglátványosabb eredménye. Azt jelenti, hogy a belső logisztikai állapotokat (pl. "Feldolgozás alatt", "Összekészítés alatt", "Szállítás alatt") valós időben, automatikusan kommunikáljuk a vevő felé.</dd>
 
                         <dt>Szállítmányozás</Ddt>
-                        <dd>A logisztikai lánc utolsó, de egyik legkritikusabb lépése: a csomag eljuttatása a raktárból a vevőhöz ("last mile delivery"). Ezt jellemzően külső futárszolgálatok végzik. A TMS szoftver feladata ezen partnertek digitális kezelése.</dd>
+                        <dd>A logisztikai lánc utolsó, de egyik legkritikusabb lépése: a csomag eljuttatása a raktárból a vevőhöz ("last mile delivery"). Ezt jellemzően külső futárszolgálatok végzik. A TMS szoftver feladata ezen partnerek digitális kezelése.</dd>
 
                         <dt>TMS (Transportation Management System)</dt>
                         <dd>Szállítmányozás-irányítási Rendszer. A "last mile" (utolsó kilométer) menedzsere. Ez a szoftver áll kapcsolatban (integrációban) a futárszolgálatok (pl. GLS, DPD, Packeta) rendszereivel. Automatikusan generálja a szállítási címkéket (fuvarleveleket) és kezeli a csomagkövetést.</dd>
@@ -564,8 +578,7 @@
                         <div class="drag-item" draggable="true" data-target="pro">Professzionális vevői élmény (státuszkövetés)</div>
                         <div class="drag-item" draggable="true" data-target="con">Gyorsabb, rugalmas (patchwork) módosítások</div>
                         <div class="drag-item" draggable="true" data-target="pro">Adatvezérelt döntéshozatal (riportok)</div>
-                        <div class="drag-item" draggable="true" data-target="pro">Kevesebb manuális könyvelési feladat</div>
-                    </div>
+                        <div class="drag-item" draggable="true" data-TA-RGET="pro">Kevesebb manuális könyvelési feladat</div> </div>
 
                     <div class="check-button-container">
                         <button id="check-answers-btn">Ellenőrzés</button>
@@ -650,121 +663,7 @@
             </section>
             
             <section id="modszertan">
-                <h2>III. MÓDSZERTAN</h2>
-                <h3>Módszertani Választások Indoklása (Pedagógiai Reflexió)</h3>
-                
-                <p>Ez az óraterv tudatosan távolodik a hagyományos, frontális oktatástól. Célom nem a lexikális tudás átadása, hanem a <strong>rendszerszemlélet (systems thinking)</strong> és a <strong>kritikai döntéshozatali képesség</strong> fejlesztése.</p>
-
-                <h4 id="andragogia">Andragógiai Megközelítés (Felnőttoktatás)</h4>
-                <p>Az óra a probléma-alapú tanulásra (PBL) épül. A "Black Friday Káosz" (ráhangolódás) azonnal relevánssá teszi a témát. A felnőtt hallgató (MSc) akkor motivált, ha érti, hogy a tananyag hogyan oldja meg a valós, gyakorlati problémáit. Nem a definícióval kezdünk, hanem a fájdalomponttal.</p>
-                
-                <h4 id="konstruktivizmus">Konstruktivizmus (Irányított Felfedezés)</h4>
-                <p>Az óra gerincét adó "A Rendelés Útja" (interaktív térkép) módszer konstruktivista. Az oktató nem <em>közli</em> az adatfolyamot, hanem a hallgatók <em>megépítik</em> azt (a meglévő tudásukra alapozva). Ez a "fedezés" sokkal mélyebb megértést eredményez, mintha csak egy kész ábrát mutatnánk. A hallgatók létrehozzák a tudást, nem passzívan befogadják.</p>
-            </section>
-        </main>
-    </div>
-
-    <script>
-        // --- 1. Haladáskövető Sáv Működése ---
-        window.onscroll = function() {
-            updateProgressBar();
-        };
-
-        function updateProgressBar() {
-            var totalHeight = document.body.scrollHeight - window.innerHeight;
-            var progress = (window.pageYOffset / totalHeight) * 100;
-            document.getElementById("progress-bar").style.width = progress + "%";
-        }
-
-        // --- 2. Párosítós Játék (Drag & Drop) Működése (ÚJ LOGIKA) ---
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const dragItems = document.querySelectorAll('.drag-item');
-            const dropZones = document.querySelectorAll('.drop-zone');
-            const checkBtn = document.getElementById('check-answers-btn');
-            const resetBtn = document.getElementById('reset-game-btn');
-            const itemContainer = document.querySelector('.drag-items'); // A kiinduló tároló
-
-            // --- 1. Adjunk egyedi ID-t minden elemnek a biztos követéshez
-            dragItems.forEach((item, index) => {
-                if (!item.id) {
-                    item.id = `drag-item-${index}`;
-                }
-            });
-
-            // --- 2. Húzás indítása ---
-            dragItems.forEach(item => {
-                item.addEventListener('dragstart', (e) => {
-                    // ID-t adunk át, nem szöveget, mert az egyértelmű
-                    e.dataTransfer.setData('text/plain', e.target.id); 
-                    setTimeout(() => {
-                        e.target.classList.add('dragging'); 
-                    }, 0);
-                });
-
-                item.addEventListener('dragend', (e) => {
-                    e.target.classList.remove('dragging');
-                });
-            });
-
-            // --- 3. Dobozok eseménykezelői ---
-            dropZones.forEach(zone => {
-                zone.addEventListener('dragover', (e) => {
-                    e.preventDefault(); // Engedélyezzük a dobást
-                    zone.classList.add('drag-over');
-                });
-
-                zone.addEventListener('dragleave', (e) => {
-                    zone.classList.remove('drag-over');
-                });
-
-                // --- 4. Dobás esemény (MEGVÁLTOZOTT LOGIKA) ---
-                zone.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    zone.classList.remove('drag-over');
-
-                    const draggedId = e.dataTransfer.getData('text/plain');
-                    const draggedEl = document.getElementById(draggedId);
-
-                    if (draggedEl) {
-                        // BÁRMIT BÁRHOVA beleejtünk. Nincs ellenőrzés.
-                        zone.appendChild(draggedEl);
-                        
-                        // Ha volt rajta szín (mert már ellenőriztük), szedje le
-                        draggedEl.classList.remove('correct-item', 'wrong-item');
-                    }
-                });
-            });
-
-            // --- 5. Ellenőrzés gomb (ÚJ LOGIKA) ---
-            checkBtn.addEventListener('click', () => {
-                dropZones.forEach(zone => {
-                    const zoneType = zone.dataset.target; // A doboz típusa ('pro' vagy 'con')
-                    const itemsInZone = zone.querySelectorAll('.drag-item');
-
-                    itemsInZone.forEach(item => {
-                        const itemType = item.dataset.target; // Az elem típusa ('pro' vagy 'con')
-                        
-                        // Helyes helyen van?
-                        if (itemType === zoneType) {
-                            item.classList.add('correct-item');
-                            item.classList.remove('wrong-item');
-                        } else { // Rossz helyen van
-                            item.classList.add('wrong-item');
-                            item.classList.remove('correct-item');
-                        }
-                    });
-                });
-            });
-
-            // --- 6. Újrapróbálom gomb (ÚJ LOGIKA) ---
-            resetBtn.addEventListener('click', () => {
-                // Visszarakjuk az összes elemet a kiinduló tárolóba
-                dragItems.forEach(item => {
-                    // Leszedjük a színeket
-                    item.classList.remove('correct-item', 'wrong-item');
-                    // Visszamozgatjuk a ".drag-items" tárolóba
-                    itemContainer.appendChild(item);
-                });
+                <h2>III. MÓDS
             });
         });
     </script>
