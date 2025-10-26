@@ -40,7 +40,7 @@
             margin-top: 8px; /* A progress bar miatt */
         }
         .sidebar {
-            width: 380px;
+            width: 430px;
             position: sticky;
             top: 8px;
             height: calc(100vh - 8px);
@@ -63,13 +63,14 @@
         .sidebar nav li {
             margin: 15px 0;
         }
-        .sidebar nav a {
-            text-decoration: none;
-            color: #ced4da;
-            font-weight: 500;
-            font-size: 1.1em;
-            transition: all 0.2s;
-        }
+       .sidebar nav a {
+           text-decoration: none;
+           color: #ced4da;
+           font-weight: 500;
+           font-size: 1.1em;
+           transition: all 0.2s;
+           overflow-wrap: break-word; /* <-- EZ A LÉNYEG! */
+       }
         .sidebar nav a:hover {
             color: #ffffff;
             padding-left: 5px;
@@ -286,14 +287,51 @@
         .drag-over {
             background-color: #e0f7fa;
         }
-        .correct-drop {
-            border: 3px solid #28a745 !important;
-            background-color: #f0fff4;
+
+        /* === JÁTÉK MÓDOSÍTÁS KEZDETE (CSS) === */
+        
+        /* --- Visszajelzés a párosítós játékon (ÚJ) --- */
+        .drag-item.correct-item {
+            background-color: #28a745 !important; /* Zöld */
+            border: 2px solid #218838 !important;
+            color: white !important;
         }
-        .wrong-drop {
-            border: 3px solid #dc3545 !important;
-            background-color: #fff5f5;
+        .drag-item.wrong-item {
+            background-color: #dc3545 !important; /* Piros */
+            border: 2px solid #c82333 !important;
+            color: white !important;
         }
+
+        /* --- Ellenőrző gombok stílusa (ÚJ) --- */
+        .check-button-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #check-answers-btn, #reset-game-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin: 0 10px;
+        }
+        #check-answers-btn:hover {
+            background-color: #0056b3;
+        }
+        #reset-game-btn {
+            background-color: #6c757d; /* Szürke */
+        }
+        #reset-game-btn:hover {
+            background-color: #5a6268;
+        }
+        
+        /* === JÁTÉK MÓDOSÍTÁS VÉGE (CSS) === */
+        
 
         /* --- II. FELDOLGOZÁSI TERV: Táblázat --- */
         .lesson-plan-table {
@@ -388,11 +426,11 @@
         <main class="content">
 
             <section id="tananyag">
-               <p>Üdvözlünk a <strong>...</strong> témakörében!</p>
-               <p>Ebben a modulban a <strong>...</strong> ismerkedünk,</p>
-               <p>a "gépházba" nézünk be: ...</p>
+               <p>Üdvözlünk a <strong>Webáruház működtetése</strong> tantárgy <strong>Logisztikai feladatok</strong> témakörében!</p>
+               <p>Ebben a modulban a <strong>Logisztikai információs rendszerekkel</strong> ismerkedünk,</p>
+               <p>a "gépházba" nézünk be: megvizsgáljuk azt a digitális gerincet, ami nélkül egy modern webshop csupán egy üres kirakat lenne.</p>
 
-               
+                
                 <h3 id="terkep">A Rendelés Útja </h3>
                 <p>Egy rendelés adatai több, egymással tökéletes szinkronban lévő rendszeren utaznak keresztül. Vidd az egeret a dobozok fölé a buborékokért!</p>
                 
@@ -428,10 +466,9 @@
                     </div>
                 </div>
 
-
                 <img src="valaszto.png" alt="Elválasztó">
 
-               
+                
                 <h3 id="fogalmak">Fogalomtár</h3>
                 <p>A térképen látott rendszerek és folyamatok kulcsfogalmai:</p>
                 <div class="glossary">
@@ -483,10 +520,9 @@
 
                 
 
-
                 <img src="valaszto.png" alt="Elválasztó">
 
-               
+                
                 <h3 id="vita">Stratégiai Vita: Beruházzunk vagy ne?</h3>
                 <p>Egy napi 100 rendeléses KKV webáruház vagyunk, ami kinőtte az Excelt. A vezetőség előtt két út áll:</p>
                 <ol>
@@ -524,7 +560,12 @@
                         <div class="drag-item" draggable="true" data-target="pro">Adatvezérelt döntéshozatal (riportok)</div>
                         <div class="drag-item" draggable="true" data-target="pro">Kevesebb manuális könyvelési feladat</div>
                     </div>
-                </div>
+
+                    <div class="check-button-container">
+                        <button id="check-answers-btn">Ellenőrzés</button>
+                        <button id="reset-game-btn">Újrapróbálom</button>
+                    </div>
+                    </div>
 
             </section>
 
@@ -545,7 +586,7 @@
 
                 <img src="valaszto.png" alt="Elválasztó">
 
-               
+                
                 <h3 id="oramenet">Óraterv</h3>
                 <table class="lesson-plan-table">
                     <thead>
@@ -593,7 +634,7 @@
 
                 <img src="valaszto.png" alt="Elválasztó">
 
-               
+                
                 <h3 id="ertekeles">Értékelés és Visszacsatolás</h3>
                 <ul>
                     <li><strong>Formális (diagnosztikus):</strong> A "Black Friday Káosz" vitában való részvétel mutatja a előzetes tudást.</li>
@@ -612,7 +653,7 @@
                 <p>Az óra a probléma-alapú tanulásra (PBL) épül. A "Black Friday Káosz" (ráhangolódás) azonnal relevánssá teszi a témát. A felnőtt hallgató (MSc) akkor motivált, ha érti, hogy a tananyag hogyan oldja meg a valós, gyakorlati problémáit. Nem a definícióval kezdünk, hanem a fájdalomponttal.</p>
                 
                 <h4 id="konstruktivizmus">Konstruktivizmus (Irányított Felfedezés)</h4>
-                <p>Az óra gerincét adó "A Rendelés Útja" (interaktív térkép) módszer konstruktivista. Az oktató nem <em>közli</em> az adatfolyamot, hanem a hallgatók <em>megépítik</em> azt (a meglévő tudásukra alapozva). Ez a "felfedezés" sokkal mélyebb megértést eredményez, mintha csak egy kész ábrát mutatnánk. A hallgatók létrehozzák a tudást, nem passzívan befogadják.</p>
+                <p>Az óra gerincét adó "A Rendelés Útja" (interaktív térkép) módszer konstruktivista. Az oktató nem <em>közli</em> az adatfolyamot, hanem a hallgatók <em>megépítik</em> azt (a meglévő tudásukra alapozva). Ez a "fedezés" sokkal mélyebb megértést eredményez, mintha csak egy kész ábrát mutatnánk. A hallgatók létrehozzák a tudást, nem passzívan befogadják.</p>
             </section>
         </main>
     </div>
@@ -624,38 +665,45 @@
         };
 
         function updateProgressBar() {
-            // Teljes dokumentum magassága
             var totalHeight = document.body.scrollHeight - window.innerHeight;
-            // Jelenlegi görgetési pozíció
             var progress = (window.pageYOffset / totalHeight) * 100;
-            
             document.getElementById("progress-bar").style.width = progress + "%";
         }
 
-        // --- 2. Párosítós Játék (Drag & Drop) Működése ---
+        // --- 2. Párosítós Játék (Drag & Drop) Működése (ÚJ LOGIKA) ---
         document.addEventListener('DOMContentLoaded', (event) => {
             const dragItems = document.querySelectorAll('.drag-item');
             const dropZones = document.querySelectorAll('.drop-zone');
+            const checkBtn = document.getElementById('check-answers-btn');
+            const resetBtn = document.getElementById('reset-game-btn');
+            const itemContainer = document.querySelector('.drag-items'); // A kiinduló tároló
 
-            // --- Húzás eseménykezelők ---
+            // --- 1. Adjunk egyedi ID-t minden elemnek a biztos követéshez
+            dragItems.forEach((item, index) => {
+                if (!item.id) {
+                    item.id = `drag-item-${index}`;
+                }
+            });
+
+            // --- 2. Húzás indítása ---
             dragItems.forEach(item => {
                 item.addEventListener('dragstart', (e) => {
-                    e.dataTransfer.setData('text/plain', e.target.id || e.target.innerText); // Adat átadása
-                    e.dataTransfer.setData('target-zone', e.target.dataset.target); // Célzóna átadása
+                    // ID-t adunk át, nem szöveget, mert az egyértelmű
+                    e.dataTransfer.setData('text/plain', e.target.id); 
                     setTimeout(() => {
-                        e.target.classList.add('dragging'); // Vizuális elrejtés
+                        e.target.classList.add('dragging'); 
                     }, 0);
                 });
 
                 item.addEventListener('dragend', (e) => {
-                    e.target.classList.remove('dragging'); // Visszaállítás
+                    e.target.classList.remove('dragging');
                 });
             });
 
-            // --- Dobás eseménykezelők ---
+            // --- 3. Dobozok eseménykezelői ---
             dropZones.forEach(zone => {
                 zone.addEventListener('dragover', (e) => {
-                    e.preventDefault(); // Megengedjük a dobást
+                    e.preventDefault(); // Engedélyezzük a dobást
                     zone.classList.add('drag-over');
                 });
 
@@ -663,44 +711,56 @@
                     zone.classList.remove('drag-over');
                 });
 
+                // --- 4. Dobás esemény (MEGVÁLTOZOTT LOGIKA) ---
                 zone.addEventListener('drop', (e) => {
                     e.preventDefault();
                     zone.classList.remove('drag-over');
 
-                    const draggedText = e.dataTransfer.getData('text/plain');
-                    const correctZone = e.dataTransfer.getData('target-zone');
-                    const targetZoneType = zone.dataset.target;
-
-                    // Megkeressük az eredeti elemet (vagy létrehozunk egy újat, ha ID-t használnánk)
-                    // Az egyszerűség kedvéért most azt az elemet keressük, aminek ez a szövege
-                    let draggedEl = null;
-                    document.querySelectorAll('.drag-item').forEach(el => {
-                        if (el.innerText === draggedText && el.classList.contains('dragging')) {
-                            draggedEl = el;
-                        }
-                    });
+                    const draggedId = e.dataTransfer.getData('text/plain');
+                    const draggedEl = document.getElementById(draggedId);
 
                     if (draggedEl) {
-                        // Ellenőrizzük, hogy a megfelelő zónába húzta-e
-                        if (correctZone === targetZoneType) {
-                            zone.appendChild(draggedEl); // Hozzáadás a zónához
-                            draggedEl.style.backgroundColor = '#28a745'; // Zöldre vált
-                            draggedEl.style.cursor = 'default';
-                            draggedEl.draggable = false; // Sikeres dobás után ne lehessen húzni
-                            
-                            // Vizuális megerősítés a zónán
-                            zone.classList.add('correct-drop');
-                            setTimeout(() => zone.classList.remove('correct-drop'), 1000);
-                        } else {
-                            // Rossz helyre húzta
-                            zone.classList.add('wrong-drop');
-                            setTimeout(() => zone.classList.remove('wrong-drop'), 1000);
-                        }
+                        // BÁRMIT BÁRHOVA beleejtünk. Nincs ellenőrzés.
+                        zone.appendChild(draggedEl);
+                        
+                        // Ha volt rajta szín (mert már ellenőriztük), szedje le
+                        draggedEl.classList.remove('correct-item', 'wrong-item');
                     }
+                });
+            });
+
+            // --- 5. Ellenőrzés gomb (ÚJ LOGIKA) ---
+            checkBtn.addEventListener('click', () => {
+                dropZones.forEach(zone => {
+                    const zoneType = zone.dataset.target; // A doboz típusa ('pro' vagy 'con')
+                    const itemsInZone = zone.querySelectorAll('.drag-item');
+
+                    itemsInZone.forEach(item => {
+                        const itemType = item.dataset.target; // Az elem típusa ('pro' vagy 'con')
+                        
+                        // Helyes helyen van?
+                        if (itemType === zoneType) {
+                            item.classList.add('correct-item');
+                            item.classList.remove('wrong-item');
+                        } else { // Rossz helyen van
+                            item.classList.add('wrong-item');
+                            item.classList.remove('correct-item');
+                        }
+                    });
+                });
+            });
+
+            // --- 6. Újrapróbálom gomb (ÚJ LOGIKA) ---
+            resetBtn.addEventListener('click', () => {
+                // Visszarakjuk az összes elemet a kiinduló tárolóba
+                dragItems.forEach(item => {
+                    // Leszedjük a színeket
+                    item.classList.remove('correct-item', 'wrong-item');
+                    // Visszamozgatjuk a ".drag-items" tárolóba
+                    itemContainer.appendChild(item);
                 });
             });
         });
     </script>
-
-</body>
+    </body>
 </html>
